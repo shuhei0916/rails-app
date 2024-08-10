@@ -7,7 +7,7 @@ class HelloController < ApplicationController
             <p>this is rails sample</p>
         </body>
         </html>
-        '
+        '   
         render html: msg.html_safe
     end
 end

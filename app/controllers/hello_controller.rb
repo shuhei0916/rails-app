@@ -1,13 +1,14 @@
 class HelloController < ApplicationController
     def index
-        # msg = '
-        # <html>
-        # <body>
-        #     <h1>Sample page</h1>
-        #     <p>this is rails sample</p>
-        # </body>
-        # </html>
-        # '   
-        # render html: msg.html_safe
+        if request.post? then 
+            @title = 'Result'
+            @msg = 'you typed: ' + params['input1'] + '.'
+            @value = params['input1']
+            puts @msg
+        else
+            @title = 'Index'
+            @msg = 'type text...'
+            @value = ''
+        end
     end
 end

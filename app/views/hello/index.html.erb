@@ -1,2 +1,7 @@
-<h1 class="display-4">Index page</h1>
-<p>this is sample page</p>
+<h1 class="display-4"><%= @title %></h1>
+
+<p><%= @msg %></p>
+<%= form_tag(url_for(controller: "hello", action: "index"), data: { turbo: false }) do %>
+    <%= text_field_tag("input1") %>
+    <%= submit_tag("Click") %>
+<% end %> 

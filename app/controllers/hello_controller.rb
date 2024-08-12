@@ -1,18 +1,8 @@
 class HelloController < ApplicationController
     def index
-        if request.post? then 
-            @title = 'Result'
-            if params['s1'] then
-                @msg = 'You selected: ' 
-                for val in params['s1']
-                    @msg += val + ' '
-                end
-            else
-                @msg = 'not selected...'
-            end
-        else
-            @title = 'Index'
-            @msg = 'select radio button...'
-        end
+        @header = 'layout sample'
+        @footer = 'copyright SYODA-Tuyano 2020'
+        @title = 'New layout'
+        @msg = 'this is a sample page!'
     end
 end

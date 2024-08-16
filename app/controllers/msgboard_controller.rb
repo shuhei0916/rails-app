@@ -1,8 +1,8 @@
 class MsgboardController < ApplicationController
   layout 'msgboard'
-  
+
   def initialize
-    super 
+    super
     begin
       @msg_data = JSON.parse(File.read("data.txt"))
     rescue
@@ -17,10 +17,25 @@ class MsgboardController < ApplicationController
   end
 
   def index
+    if request.post? then
+      obj = MyData.new(msg:params['msg'], name:params['name'], mail:params['mail'])
+      @msg_data[Time.now.to_i] = obj
+      data = @msg_data.to_json
+      File.write("data.txt", data)
+      @msg_data = JSON.parse(data)
+    end
   end
 
 end
 
 class MyData
-  
+  attr_accessor :name
+  attr_accessor :mail
+  attr_accessor :msg
+
+  def initialize(msg:, name:, mail:)
+    self.name = name
+    self.mail = mail
+    self.msg = msg
+  end
 end
